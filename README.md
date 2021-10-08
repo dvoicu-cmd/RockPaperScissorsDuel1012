@@ -1,8 +1,7 @@
 # RockPaperScissorsDuel1012
-Hard Demanding Mindful Inquirers (HDMI)
+Team Name: Hard Demanding Mindful Inquirers (HDMI)
 
-HDMI's 1012 term project.
-
+Team Members: Dan Voicu, Yashitha Madanapalli, Minkyu (Jonathan) Kim
 
 **Project Discription:**
 
@@ -12,9 +11,10 @@ The premises of the project is to play a game of rock paper scissors against a s
 **Requirements Definition:**
 (need 10 to 15 project statements)
 
-* item 1
-* item 2
-* item 3 
+* There will be a button to the left of the page that will give a tutorial to high light the game's rules if the user chooses.
+* No account is need and the game can be played immediately.
+* The user will interact with the game by clicking images corrolated to their choice.
+* A round is played to a best of two. 
 
 
 
