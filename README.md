@@ -18,8 +18,8 @@ The premises of the project is to play a game of rock paper scissors against a s
 * There will be a button labeled "tutorial" to the left of the page that will give a tutorial to high light the game's rules if the user chooses.
 * No account is need and the game can be played immediately as the game is always running.
 * The user will interact with the game by clicking images corrolated to their choice.
-* A round is played to a best of two, afterwards the round resets.
-*  
+* A round is played to a best of two, afterwards the scores are resets.
+* WIP
 
 
 
