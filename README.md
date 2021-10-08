@@ -1,4 +1,4 @@
-# RockPaperScissors1012
+# RockPaperScissorsDuel1012
 Our 1012 term project.
 
 
