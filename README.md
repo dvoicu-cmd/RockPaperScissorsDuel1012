@@ -1,5 +1,6 @@
 # RockPaperScissorsDuel1012
 Hard Demanding Mindful Inquirers (HDMI)
+
 HDMI's 1012 term project.
 
 
