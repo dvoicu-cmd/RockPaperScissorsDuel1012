@@ -1,5 +1,9 @@
 # RockPaperScissorsDuel1012
-Our 1012 term project.
+Hard Demanding Mindful Inquirers (HDMI)
+
+
+HDMI's 1012 term project.
+
 
 
 Project Discription:
