@@ -17,19 +17,19 @@ The premises of the project is to play a game of rock paper scissors against a s
 **Requirements Definition:**
 (Work in progress)
 
-•	User interface requirements
-o	New users are to load into the page with no required login.
-	The idea is to get players into the game right away without any interference.
-o	There is to be a drop-down menu button on the top left-hand corner of the web page.
-	Upon clicking, additional information and links are displayed to the left while the game is pushed to the right.
-	The menu will contain a link to a separate webpage with a tutorial, and the ability to toggle if the opponent is a computer or a player.
-o	The page will consist of a game area that is separated into two sides.
+ *User interface requirements
+    *New users are to load into the page with no required login.
+      *The idea is to get players into the game right away without any interference.
+    *There is to be a drop-down menu button on the top left-hand corner of the web page.
+      *Upon clicking, additional information and links are displayed to the left while the game is pushed to the right.
+      *The menu will contain a link to a separate webpage with a tutorial, and the ability to toggle if the opponent is a computer or a player.
+    *The page will consist of a game area that is separated into two sides.
 
-•	Game requirements
-o	There is a multipurpose button above the footer that serves mainly to progress games.
-	Button is used to start a round of the game, play the next round of the game, and start a new game if the round concludes.
-	The button will display in a string of text what it does such as, “Next Round” or, “New Game?”
-o	The score for each player’s section of the web page displays a current score for a round
+ *Game requirements
+    *There is a multipurpose button above the footer that serves mainly to progress games.
+      *Button is used to start a round of the game, play the next round of the game, and start a new game if the round concludes.
+      *The button will display in a string of text what it does such as, “Next Round” or, “New Game?”
+    *The score for each player’s section of the web page displays a current score for a round
 	The score is indicted with two hollow black dots.  
 	Filled in dots indicate a win.
 	The first player to fill the dots wins the game
