@@ -17,11 +17,37 @@ The premises of the project is to play a game of rock paper scissors against a s
 **Requirements Definition:**
 (Work in progress)
 
-* There will be a button labeled "tutorial" to the left of the page that will give a tutorial to high light the game's rules if the user chooses.
-* No account is need and the game can be played immediately as the game is always running.
-* The user will interact with the game by clicking images corrolated to their choice.
-* A round is played to a best of two, afterwards the scores are resets.
-* WIP
+•	User interface requirements
+o	New users are to load into the page with no required login.
+	The idea is to get players into the game right away without any interference.
+o	There is to be a drop-down menu button on the top left-hand corner of the web page.
+	Upon clicking, additional information and links are displayed to the left while the game is pushed to the right.
+	The menu will contain a link to a separate webpage with a tutorial, and the ability to toggle if the opponent is a computer or a player.
+o	The page will consist of a game area that is separated into two sides.
+
+•	Game requirements
+o	There is a multipurpose button above the footer that serves mainly to progress games.
+	Button is used to start a round of the game, play the next round of the game, and start a new game if the round concludes.
+	The button will display in a string of text what it does such as, “Next Round” or, “New Game?”
+o	The score for each player’s section of the web page displays a current score for a round
+	The score is indicted with two hollow black dots.  
+	Filled in dots indicate a win.
+	The first player to fill the dots wins the game
+o	The choice of rock paper or scissors is decided on what image the user clicks.
+	The image chosen correlates to the user’s desired choice of rock paper or scissors
+o	Games can be played against a computer player, or the user can toggle a pass and play option
+	Slight alterations
+
+•	Programing requirements
+o	The web application will be developed using HTML for the body web page, CSS for the visuals of the web page, and JavaScript for scripts and commands on the webpage
+o	The choice of rock paper or scissors will be represented respectively as 1, 2, and 3 in code.
+	This is done to save a little bit of data since numbers are smaller to store than a string of text such as, “rock”.
+o	To determine if a win condition is meet, if and else statements will be used to account for all nine possible outcomes for the game.
+	To be extra precise, about seven if and else statements are needed since three out of the nine outcomes happen when both sides pick the same object.
+o	When the user is in Player Vs Computer mode, the way the computer decides its choice is via a random number generator between 1 and 3.
+	Specifics for implementing a random number generator are to be investigated. The base line is: 1,2 or 3 is randomly chosen.
+
+
 
 
 
