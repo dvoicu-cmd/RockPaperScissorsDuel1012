@@ -43,6 +43,17 @@ Programing requirements
 - When the user is in Player Vs Computer mode, the way the computer decides its choice is via a random number generator between 1 and 3.
 
 
+**Wireframes**
+
+First itteration: 
+
+![#1 Wireframe Main Page Consept](https://user-images.githubusercontent.com/66493298/140599675-f848b321-41c0-460a-a805-f6b0c4d24f8a.jpg)
+
+Second itteration:
+
+![#2 Project Wireframe](https://user-images.githubusercontent.com/66493298/140599683-48655ecd-b284-4eb5-a793-6e6dea9ac891.JPG)
+
+
 
 
 
