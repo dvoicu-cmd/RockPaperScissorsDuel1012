@@ -19,13 +19,15 @@ User interface requirements
 - There is to be a drop-down menu button on the top left-hand corner of the web page.
 - Upon clicking the button for drop-down menu, additional information and links are displayed to the left while the game is pushed to the right.
 - Drop down menu will contain a link to a separate webpage with a tutorial, and the ability to toggle if the opponent is a computer or a player.
+- A button element will be used to toggle if player 2 is on or not.
 - The page will consist of a game area that is separated into two sides.
 - Left side of the page is player 1 and right side is player 2 or a computer player.
+
 
 Game requirements
 
 - There is a multipurpose button above the footer that serves mainly to progress games.
-- Multipurpose button is used to start a round of the game, play the next round of the game, and start a new game if the round concludes.
+- Multipurpose button is used to start a round of the game, and start a new game if the round concludes.
 - Multipurpose button will display in a string of text what it does such as: “Next Round” or, “New Game?”
 - The score for each player’s section of the web page displays a current score for a round.
 - The score is indicted with two hollow black dots with filled in dots indicating a win.
