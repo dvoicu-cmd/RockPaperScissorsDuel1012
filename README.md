@@ -19,13 +19,15 @@ User interface requirements
 - There is to be a drop-down menu button on the top left-hand corner of the web page.
 - Upon clicking the button for drop-down menu, additional information and links are displayed to the left while the game is pushed to the right.
 - Drop down menu will contain a link to a separate webpage with a tutorial, and the ability to toggle if the opponent is a computer or a player.
+- A button element will be used to toggle if player 2 is on or not.
 - The page will consist of a game area that is separated into two sides.
 - Left side of the page is player 1 and right side is player 2 or a computer player.
+
 
 Game requirements
 
 - There is a multipurpose button above the footer that serves mainly to progress games.
-- Multipurpose button is used to start a round of the game, play the next round of the game, and start a new game if the round concludes.
+- Multipurpose button is used to start a round of the game, and start a new game if the round concludes.
 - Multipurpose button will display in a string of text what it does such as: “Next Round” or, “New Game?”
 - The score for each player’s section of the web page displays a current score for a round.
 - The score is indicted with two hollow black dots with filled in dots indicating a win.
@@ -41,6 +43,17 @@ Programing requirements
 - The choice of rock paper or scissors will be represented respectively as 1, 2, and 3 in code.
 - To determine if a win condition is meet, if and else statements will be used to account for all nine possible outcomes for the game.
 - When the user is in Player Vs Computer mode, the way the computer decides its choice is via a random number generator between 1 and 3.
+
+
+**Wireframes**
+
+First iteration: 
+
+![#1 Wireframe Main Page Consept](https://user-images.githubusercontent.com/66493298/140599675-f848b321-41c0-460a-a805-f6b0c4d24f8a.jpg)
+
+Second iteration:
+
+![#2 Project Wireframe](https://user-images.githubusercontent.com/66493298/140599683-48655ecd-b284-4eb5-a793-6e6dea9ac891.JPG)
 
 
 
