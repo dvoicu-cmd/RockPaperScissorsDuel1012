@@ -42,7 +42,7 @@ Programing requirements
 - The web application will be developed using HTML for the body web page, CSS for the visuals of the web page, and JavaScript for scripts and commands on the webpage
 - The choice of rock paper or scissors will be represented respectively as 1, 2, and 3 in code.
 - To determine if a win condition is meet, if and else statements will be used to account for all nine possible outcomes for the game.
-- When the user is in Player Vs Computer mode, the way the computer decides its choice is via a random number generator between 1 and 3.
+- When the user is in Player Vs Computer mode, the way the computer decides its choice is via a random number generator between 1 and 3. (This could be determined by running the user's input through a complex mathematical formula that would generate a number).
 
 
 **Wireframes**
