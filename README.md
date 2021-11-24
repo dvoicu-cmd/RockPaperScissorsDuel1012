@@ -1,9 +1,9 @@
 # RockPaperScissorsDuel1012
 Team Name: Hard Demanding Mindful Inquirers (HDMI)
 
-Team Members: Dan Voicu, Yashitha Madanapalli, Minkyu (Jonathan) Kim
+Team: Dan Voicu
 
-Emails: danvoicu@my.yorku.ca , yashi22@yorku.ca , 0714kmk@my.yorku.ca
+Email: danvoicu@my.yorku.ca
 
 
 
