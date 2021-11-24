@@ -1,0 +1,16 @@
+.header{
+    display: center;
+}
+
+#playerOne{
+    float: left;
+}
+#playerTwo{
+    float:right;
+    
+}
+
+.gameImages{
+    width: 35%;
+    height: 35%;
+}
