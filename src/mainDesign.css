@@ -12,12 +12,11 @@
 .flex-container{
     display:flex;
 }
-
 .flex-child{
     flex:1;
 }
 
-/*Code for grid containers*/
+/*Display code for grid containers*/
 .grid-container{
     display: grid;
 }
@@ -29,7 +28,6 @@
     margin-left:auto;
     margin-right:auto;
 }
-
 .playerScore{
     margin-left:auto;
     margin-right:auto;
@@ -39,17 +37,36 @@
 #gameBoard{
     border-style: solid;
     border-color: red;
+    max-height:70%;
+    margin-left:5%;
+    margin-right:5%;
 }
 
+/*Drop down menu display*/
 #dropDown{
     border-style: solid;
     border-color: green;
     max-width: 30%;
-    display: block;
+    max-height: 70%;
+    display:none;
 }
-
 #dropDownContent{
     padding: 10%;
 }
 
+/*Display for the button in the center*/
+.centerButton{
+    max-width:10%;
+    max-height:70%;
+    margin-top: 58%;
+    text-align:center;
+}
+
+/*Small adjustments in the text above the rock paper scissors selections*/
+.playerStatus{
+    text-align: center;
+}
+.playerBox{
+    margin: 3%;
+}
 

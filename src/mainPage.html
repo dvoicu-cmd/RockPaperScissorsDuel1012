@@ -35,26 +35,55 @@
         </div>
 
         <div id="gameBoard" class="flex-container flex-child">
-            <div id="playerOne" class="flex-child">
-                <!-- Three images, (place holder)-->
+            <div id="playerOne" class="flex-child playerBox">
+                
                 <div class="grid-container">
-                    <img src="imageSources/Rock.png" class="gameImages">
-                    <img src="imageSources/Paper.jpg" class="gameImages">
-                    <img src="imageSources/Scissors.png" class="gameImages">
+                    
+                    <!-- Paragraphs to discribe the player status-->
+                    <div class="playerStatus">
+                        <p>Player 1</p>
+                        <p>Status: Current Turn</p>
+                    </div>
+
+                    <!-- game images-->
+                    <div class="grid-container">
+                        <img src="imageSources/Rock.png" class="gameImages">
+                        <img src="imageSources/Paper.jpg" class="gameImages">
+                        <img src="imageSources/Scissors.png" class="gameImages">
+                    </div>
+                    
+                    <!-- Track player score-->
                     <div id="P1" class="playerScore">
                         <img class="playerScore-1" src="imageSources/white_peg.png">
                         <img class="playerScore-2" src="imageSources/white_peg.png">
                     </div>
+
                 </div>
             </div>
 
-            <div id="playerTwo" class="flex-child">
-                <!-- Three images, (place holder)-->
+            <!-- center button -->
+            <div class="flex-child centerButton">
+                <button id="progressButton">Sample Status</button>
+            </div>
+
+            <div id="playerTwo" class="flex-child playerBox">
+                
+                <!-- Container -->
                 <div class="grid-container">
-                    <img src="imageSources/Rock.png" class="gameImages">
-                    <img src="imageSources/Paper.jpg" class="gameImages">
-                    <img src="imageSources/Scissors.png"class="gameImages">
+                    
+                    <div class="playerStatus">
+                        <p>Player 2</p>
+                        <p>Status: Waiting Turn</p>
+                    </div>
+
+                    <!-- rock paper scissors selector placeholder -->
+                    <div class="grid-container">
+                        <img src="imageSources/Rock.png" class="gameImages">
+                        <img src="imageSources/Paper.jpg" class="gameImages">
+                        <img src="imageSources/Scissors.png" class="gameImages">
+                    </div>
                     <!-- Place holder score socketts.-->
+                    
                     <div id="P2" class="playerScore">
                         <img class="playerScore-1" src="imageSources/black_peg.png">
                         <img class="playerScore-2" src="imageSources/white_peg.png">
