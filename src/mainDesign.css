@@ -1,11 +1,11 @@
-/*Make the header text centered*/
-.header .text{
-    text-align:center;
+/*Specify the display of the header/footer.*/
+.bun{
+    display:block;
 }
 
-/*Specify the display of the header*/
-.header{
-    display:block;
+/*Make the header/footer text centered*/
+.bun .text{
+    text-align:center;
 }
 
 /*Display code if I want containers to be side by side*/
