@@ -16,21 +16,27 @@
 <body>
     <div id="head" class="header">
         <button id="dropDown" onclick=dropDown()>=</button>
-        <p>Header Sample Text</p>
+        <p class="header text">Header Sample Text</p>
     </div> 
 
-    <div id="playerOne">
-        <!-- Three images, (place holder-->
-        <img src="imageSources/Rock.png" class="gameImages">
-        <img src="imageSources/Paper.jpg" class="gameImages">
-        <img src="imageSources/Scissors.png" class="gameImages">
-    </div>
+    <div class="flex-container">
+        <div id="playerOne" class="flex-child">
+            <!-- Three images, (place holder-->
+            <div class="grid-container">
+                <img src="imageSources/Rock.png" class="gameImages">
+                <img src="imageSources/Paper.jpg" class="gameImages">
+                <img src="imageSources/Scissors.png" class="gameImages">
+            </div>
+        </div>
 
-    <div id="playerTwo">
-        <!-- Three images, (place holder)-->
-        <img src="imageSources/Rock.png" class="gameImages">
-        <img src="imageSources/Paper.jpg" class="gameImages">
-        <img src="imageSources/Scissors.png"class="gameImages">
+        <div id="playerTwo" class="flex-child">
+            <!-- Three images, (place holder)-->
+            <div class="grid-container">
+                <img src="imageSources/Rock.png" class="gameImages">
+                <img src="imageSources/Paper.jpg" class="gameImages">
+                <img src="imageSources/Scissors.png"class="gameImages">
+            </div>
+        </div>
     </div>
 
 </body>

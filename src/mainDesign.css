@@ -1,16 +1,31 @@
+/*Make the header text centered*/
+.header .text{
+    text-align:center;
+}
+
+/*Specify the display of the header*/
 .header{
-    display: center;
+    display:block;
 }
 
-#playerOne{
-    float: left;
-}
-#playerTwo{
-    float:right;
-    
+/*Display code if I want containers to be side by side*/
+.flex-container{
+    display:flex;
 }
 
+.flex-child{
+    flex:1;
+}
+
+/*Code for grid containers*/
+.grid-container{
+    display: grid;
+}
+
+/*Adjust the game images' sizes and move them to the center of the container*/
 .gameImages{
-    width: 35%;
-    height: 35%;
+    width: 60%;
+    height: 90%;
+    margin-left:auto;
+    margin-right:auto;
 }
