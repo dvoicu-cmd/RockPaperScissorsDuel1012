@@ -15,34 +15,47 @@
 <!-- Content of the page / Main body -->
 <body>
     <div id="head" class="bun">
-        <button id="dropDown" onclick=dropDown()>=</button>
+        <button id="dropDownButton" onclick=dropDown()>=</button>
         <p class="bun text">Header Sample Text</p>
     </div> 
 
-    <div class="flex-container">
-        <div id="playerOne" class="flex-child">
-            <!-- Three images, (place holder)-->
-            <div class="grid-container">
-                <img src="imageSources/Rock.png" class="gameImages">
-                <img src="imageSources/Paper.jpg" class="gameImages">
-                <img src="imageSources/Scissors.png" class="gameImages">
-            </div>
-        </div>
+    <!-- <div id="middleBody" class="flex-container">
 
-        <div id="playerTwo" class="flex-child">
-            <!-- Three images, (place holder)-->
-            <div class="grid-container">
-                <img src="imageSources/Rock.png" class="gameImages">
-                <img src="imageSources/Paper.jpg" class="gameImages">
-                <img src="imageSources/Scissors.png"class="gameImages">
+        <div id="dropDown" class="flex-child">
+
+        </div> -->
+
+        <div id="gameBoard" class="flex-container flex-child">
+            <div id="playerOne" class="flex-child">
+                <!-- Three images, (place holder)-->
+                <div class="grid-container">
+                    <img src="imageSources/Rock.png" class="gameImages">
+                    <img src="imageSources/Paper.jpg" class="gameImages">
+                    <img src="imageSources/Scissors.png" class="gameImages">
+                    <div id="P1" class="playerScore">
+                        <img class="playerScore-1" src="imageSources/white_peg.png">
+                        <img class="playerScore-2" src="imageSources/white_peg.png">
+                    </div>
+                </div>
             </div>
-            <!-- Place holder score socketts.-->
-            <div id="P2" class="playerScore">
-                <img class="playerScore-1" src="imageSources/hole.png">
-                <img class="playerScore-2" src="imageSources/hole.png">
+
+            <div id="playerTwo" class="flex-child">
+                <!-- Three images, (place holder)-->
+                <div class="grid-container">
+                    <img src="imageSources/Rock.png" class="gameImages">
+                    <img src="imageSources/Paper.jpg" class="gameImages">
+                    <img src="imageSources/Scissors.png"class="gameImages">
+                    <!-- Place holder score socketts.-->
+                    <div id="P2" class="playerScore">
+                        <img class="playerScore-1" src="imageSources/black_peg.png">
+                        <img class="playerScore-2" src="imageSources/white_peg.png">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+<!-- 
+    </div> -->
+
 
     <div id="foot" class="bun">
         <p class="bun text">Copyright lolol</p>
