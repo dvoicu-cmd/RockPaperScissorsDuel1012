@@ -8,6 +8,6 @@ var app = express(); //I Think this is for node.js in which the express framwork
 app.post('/post', (req, res) => { //req --> request infromation, res --> server response
     console.log("Server is running!");
 }).listen(3000);
-
+console.log("Server is running!");
 
 //Additional functions below
