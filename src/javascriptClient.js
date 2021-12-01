@@ -34,8 +34,11 @@ function p1Select(input){
 
 //The client's response to the server
 function response(data){
-    var response = JSON.parse(data); //put server response into a response var
-    consol.log(data);
+    var serverData = JSON.parse(data); //put server response into a var
+    if (serverData['action'] == 'hide') {
+        $("#progressButton").css("display","none"); //if action recived then hide the button.
+    }
+
 
 }
 

@@ -9,6 +9,15 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
     res.header("Access-Control-Allow-Origin", "*"); //Not sure what this means but it was in lab09
     console.log("Recived Action");
     var recivedData = JSON.parse(req.query['data']); //Is this where the recived data goes?
+
+    if(recivedData['action'] == 'startGame'){
+        var jsonRes = JSON.stringify({
+            'action': 'hide'
+        })
+
+        res.send(jsonRes); //send the response back to client
+    }
+
 }).listen(3000);
 console.log("Server is running!");
 
