@@ -6,7 +6,9 @@ var app = express(); //I Think this is for node.js in which the express framwork
 
 //So from what I see in lab09, I need to put all my server commands in here
 app.post('/post', (req, res) => { //req --> request infromation, res --> server response
-    console.log("Server is running!");
+    res.header("Access-Control-Allow-Origin", "*"); //Not sure what this means but it was in lab09
+    console.log("Recived Action");
+    var recivedData = JSON.parse(req.query['data']); //Is this where the recived data goes?
 }).listen(3000);
 console.log("Server is running!");
 

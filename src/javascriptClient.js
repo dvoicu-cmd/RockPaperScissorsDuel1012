@@ -9,21 +9,32 @@ function dropDown() {
     }
 }
 
+//Function to start a new game.
+function newGame() {
+    //Tell the server I want to start a new game
+    $.post(url+'?data='+JSON.stringify({
+        'action':'startGame'}),
+        response);
+    }
+
 //Selection for player one.
 function p1Select(input){
 
 }
 
 
+
+
 //If I want to send data over use the following
 
-$.post(url+'?data='+JSON.stringify({
-    'name':myName,
-    'action':'generateCode'}),
-    response);
+// $.post(url+'?data='+JSON.stringify({
+//     'name':myName,
+//     'action':'generateCode'}),
+//     response);
 
 //The client's response to the server
 function response(data){
+    var response = JSON.parse(data); //put server response into a response var
     consol.log(data);
 
 }
