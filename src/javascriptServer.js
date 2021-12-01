@@ -1,5 +1,22 @@
 //File is meant for the server functions. Still a work in progress.
 
+//GLOBAL VARS
+
+//Keep track if there is an active game.
+var gameRunning = false;
+
+//Keep track of player choice
+var p1Choice = 0;
+var p2Choice = 0;
+
+//Track player score
+var p1Score = 0;
+var p2Score = 0;
+
+//Turn on player two cpu
+var cpuToggle = false;
+
+
 var express = require('express');
 const { send } = require('process');
 var app = express(); //I Think this is for node.js in which the express framwork is used.

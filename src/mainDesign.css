@@ -56,9 +56,9 @@
 
 /*Display for the button in the center*/
 .centerButton{
-    max-width:9%;
+    max-width:15%;
     max-height:70%;
-    margin-top: 67%;
+    margin-top: 23%;
     text-align:center;
 }
 

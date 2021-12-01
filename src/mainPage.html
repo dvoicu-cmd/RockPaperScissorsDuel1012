@@ -66,7 +66,13 @@
 
             <!-- center button -->
             <div class="flex-child centerButton">
-                <button id="progressButton" onclick="newGame()">Sample Status</button>
+                <div class="flex-child grid-container">
+                    <p id="P1-Result">P1 chose: <span id="choice">Rock</span></p>
+                    <p id="P2-Result">P2 chose: <span id="choice">Rock</span></p>
+                    <p id="conclude"> Therefore: <span id="winner">No Player</span> Wins</p>
+                </div>
+
+                <button id="progressButton" onclick="newGame()">New Game?</button>
             </div>
 
             <div id="playerTwo" class="flex-child playerBox">
