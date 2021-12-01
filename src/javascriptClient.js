@@ -1,4 +1,12 @@
+//This file is meant to handle client side operations
+
+//GLOBAL VARIABLES
+
+//The url where the data will be uploaded.
 var url = "http://localhost:3000/post";
+
+//
+var cpu = "ON" //string is ON or OFF. I would use a boolean but those can't be sent over json.
 
 //Function will load up the drop down menu.
 function dropDown() {
@@ -13,6 +21,7 @@ function dropDown() {
 function newGame() {
     //Tell the server I want to start a new game
     $.post(url+'?data='+JSON.stringify({
+        'cpu': cpu, //send over cpu status
         'action':'startGame'}),
         response);
     }

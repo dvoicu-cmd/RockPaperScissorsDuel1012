@@ -13,6 +13,9 @@ var p2Choice = 0;
 var p1Score = 0;
 var p2Score = 0;
 
+//Track whos turn it is
+var playerTurn = 1; //1 or 2.
+
 //Turn on player two cpu
 var cpuToggle = false;
 
@@ -25,9 +28,22 @@ var app = express(); //I Think this is for node.js in which the express framwork
 app.post('/post', (req, res) => { //req --> request infromation, res --> server response
     res.header("Access-Control-Allow-Origin", "*"); //Not sure what this means but it was in lab09
     console.log("Recived Action");
-    var recivedData = JSON.parse(req.query['data']); //Is this where the recived data goes?
+    var recivedData = JSON.parse(req.query['data']); //This where the recived data goes.
+
+    //Server actions HERE
 
     if(recivedData['action'] == 'startGame'){
+        if (gameRunning == true) { //If there is already a game running, resume it
+            //... 
+        }
+        else { //Otherwise
+            gameRunning = true; // set game status as running
+            p1Score = 0; //Scores to 0
+            p2Score = 0;
+            if (recivedData['cpu'] == 'ON'){ //If the cpu was turned on.
+                cpuToggle = true; //Store the fact that the cpu is on.
+            }
+        }
         var jsonRes = JSON.stringify({
             'action': 'hide'
         })
