@@ -43,19 +43,10 @@ function Select(input , player){
             response);
     }
     else {
-        window.alert("Wrong side. It is player "+turn+"'s");
+        window.alert("Wrong side. It is player "+turn+"'s turn");
     }
 
 }
-
-
-
-//If I want to send data over use the following
-
-// $.post(url+'?data='+JSON.stringify({
-//     'name':myName,
-//     'action':'generateCode'}),
-//     response);
 
 //The client's response to the server
 function response(data){
@@ -67,7 +58,7 @@ function response(data){
         $("#P1-Status").css("visibility","visible");//Show player statuses
         $("#P2-Status").css("visibility","visible");
         //Store who's turn it is.
-        turn = data['pTurn'];
+        turn = serverData['pTurn'];
         //await user input 
     }
 
@@ -77,21 +68,38 @@ function response(data){
         $("#progressButton").css("display","none");
     }
 
+    //action nextTurn recived: Move to player two's turn
+    if (serverData['action'] == 'nextTurn') {
+        //Update player status
+        $("#P1-Status").text("Status: Waiting Turn");
+        $("#P2-Status").text("Status: Current Turn");
+
+        //Update who's turn it is
+        turn = serverData['pTurn'];
+        
+        //await User input
+    }
+
     //action continueRound recived: Apply Score and get player one input.
     if (serverData['action'] == 'continueRound'){
 
         //update status
-        $("#P1-Status").text("Status: Awaiting Turn");
-        $("#P2-Status").text("Status: Current Turn");
+        $("#P1-Status").text("Status: Current Turn");
+        $("#P2-Status").text("Status: Awaiting Turn");
+
+        //Display Round results in the middle
+
+
+        //Assign points
+
+
+
     }
 
     //action finishGame recived: Conclude the game and present results. Show new game button.
     if (serverData['action'] == 'finishGame') {
 
     }
-
-    //action nextTurn recived: Move to player two's turn
-    if (serverData['action'] == 'nextTurn')
 
 
 }

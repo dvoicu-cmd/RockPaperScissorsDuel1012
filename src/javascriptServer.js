@@ -36,7 +36,6 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
     var recivedData = JSON.parse(req.query['data']); //This where the recived data goes.
 
     //Server actions HERE
-
     
     //When there is a startGame prompt from client.
     if(recivedData['action'] == 'startGame'){
@@ -60,6 +59,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                 'cpu' : cpuToggle,
             });
         }
+        console.log(playerTurn);
         res.send(jsonRes); //send the response back to client
     }
 
@@ -67,10 +67,10 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
     if(recivedData['action'] == 'move'){
 
         if(playerTurn == 1){ //if player 1 moved
-            p1Choice = recivedData[playerChoice]; //store p1's data
+            p1Choice = recivedData['playerChoice']; //store p1's data
             playerTurn++; //change the turn
 
-            if(cpuToggle == true){ //if the cpu is turned on make it's move
+            if(cpuToggle == true){ //if the cpu is on, make it's move
                 p2Choice = cpuMove();
                 playerTurn--; //change the turn
                 var Winner = evaluate(p1Choice,p2Choice); //Then evaluate the results
@@ -82,6 +82,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                         'p2Choice': p2Choice,
                         'p1Scr': p1Score,
                         'p2Scr': p2Score,
+                        'pTurn': 0,
                         'whoWon': whoWon
                     });
                     var gameRunning = false; //Stop game
@@ -93,19 +94,22 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                         'p2Choice': p2Choice,
                         'p1Scr': p1Score,
                         'p2Scr': p2Score,
-                        'pTurn': pTurn,
+                        'pTurn': playerTurn,
                         'whoWon': whoWon
                     });
                 }
             }
-            
+
             else{ //If the cpu is off, send a request for player two input.
-                var jsonRes = JSON.stringify({'action':'nextTurn'});
+                var jsonRes = JSON.stringify({
+                    'action':'nextTurn',
+                    'pTurn': playerTurn
+                    });
             }
         }
 
         else if (playerTurn == 2) { //Otherwise if player 2 moved
-            p2Choice = recivedData[playerChoice]; //Store player's choice
+            p2Choice = recivedData['playerChoice']; //Store player's choice
             playerTurn--; //Move the turn tracker back.
 
             var Winner = evaluate(p1Choice,p2Choice); //Then evaluate the results
@@ -117,6 +121,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                     'p2Choice': p2Choice,
                     'p1Scr': p1Score,
                     'p2Scr': p2Score,
+                    'pTurn': 0,
                     'whoWon': whoWon
                 });
                 var gameRunning = false; //Stop the game
@@ -128,13 +133,12 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                     'p2Choice': p2Choice,
                     'p1Scr': p1Score,
                     'p2Scr': p2Score,
-                    'pTurn': pTurn,
-                    'whoWon': whoWon
+                    'pTurn': playerTurn,
                 });
             }
 
         }
-
+        console.log(playerTurn);
         res.send(jsonRes);
     }
 
@@ -194,7 +198,7 @@ function evaluate(p1, p2){
     }
 }
 
-//Controlls the score of the game
+//Controls the score of the game
 function Score(win){
     switch(win){
         case 0:{
