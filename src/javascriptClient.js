@@ -8,6 +8,7 @@ var url = "http://localhost:3000/post";
 //Toggle for cpu.
 var cpuToggle = false; 
 
+//Keep track of turn data from server.
 var turn = 0;
 
 //Function will load up the drop down menu.
@@ -38,17 +39,11 @@ function Select(input , player){
     if (turn == player){ //if it was player 1 who moved
         $.post(url+'?data='+JSON.stringify({ //Send
             'playerChoice' : input,
-            'action':'store'}), //Store p1's choice.
-            response);
-    }
-    else if (turn == player){ //else check if it is player 2's move
-        $.post(url+'?data='+JSON.stringify({ //Send
-            'playerChoice' : input,
-            'action':'evaluate'}), //If it is p2's turn then evaluate the winner
+            'action':'move'}), //Store p1's choice.
             response);
     }
     else {
-        window.alert("Error: Invalid Turn ID");
+        window.alert("Wrong side. It is player "+turn+"'s");
     }
 
 }
@@ -76,21 +71,27 @@ function response(data){
         //await user input 
     }
 
-    //action resume recived
+    //action resume recived: Plug in data from the server to client
     if (serverData['action'] == 'resume'){
         window.alert("Previous game was interrupted. Resuming")
         $("#progressButton").css("display","none");
     }
 
-    //action nextPlay recived
-    if (serverData['action'] == 'nextPlay'){
-
-        if
+    //action continueRound recived: Apply Score and get player one input.
+    if (serverData['action'] == 'continueRound'){
 
         //update status
         $("#P1-Status").text("Status: Awaiting Turn");
         $("#P2-Status").text("Status: Current Turn");
     }
+
+    //action finishGame recived: Conclude the game and present results. Show new game button.
+    if (serverData['action'] == 'finishGame') {
+
+    }
+
+    //action nextTurn recived: Move to player two's turn
+    if (serverData['action'] == 'nextTurn')
 
 
 }

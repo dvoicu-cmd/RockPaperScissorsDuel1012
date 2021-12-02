@@ -63,14 +63,51 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
         res.send(jsonRes); //send the response back to client
     }
 
-    //If player one made a move.
-    if(recivedData['action'] == 'p1-move'){
-        p1Choice = recivedData[playerChoice]; //store p1's data
-        playerTurn++; //change the turn
+    //If a player made a move.
+    if(recivedData['action'] == 'move'){
 
-        if(cpuToggle == true){ //if the cpu is turned on make it's move
-            p2Choice = cpuMove();
-            playerTurn--; //change the turn
+        if(playerTurn == 1){ //if player 1 moved
+            p1Choice = recivedData[playerChoice]; //store p1's data
+            playerTurn++; //change the turn
+
+            if(cpuToggle == true){ //if the cpu is turned on make it's move
+                p2Choice = cpuMove();
+                playerTurn--; //change the turn
+                var Winner = evaluate(p1Choice,p2Choice); //Then evaluate the results
+                Score(Winner);
+                if (end == true){ //Did that move win the game? If so send it to the client.
+                    var jsonRes = JSON.stringify({
+                        'action':'finishGame',
+                        'p1Choice': p1Choice,
+                        'p2Choice': p2Choice,
+                        'p1Scr': p1Score,
+                        'p2Scr': p2Score,
+                        'whoWon': whoWon
+                    });
+                    var gameRunning = false; //Stop game
+                }
+                else { //If not, send request to continue playing
+                    var jsonRes = JSON.stringify({
+                        'action':'continueRound',
+                        'p1Choice': p1Choice,
+                        'p2Choice': p2Choice,
+                        'p1Scr': p1Score,
+                        'p2Scr': p2Score,
+                        'pTurn': pTurn,
+                        'whoWon': whoWon
+                    });
+                }
+            }
+            
+            else{ //If the cpu is off, send a request for player two input.
+                var jsonRes = JSON.stringify({'action':'nextTurn'});
+            }
+        }
+
+        else if (playerTurn == 2) { //Otherwise if player 2 moved
+            p2Choice = recivedData[playerChoice]; //Store player's choice
+            playerTurn--; //Move the turn tracker back.
+
             var Winner = evaluate(p1Choice,p2Choice); //Then evaluate the results
             Score(Winner);
             if (end == true){ //Did that move win the game? If so send it to the client.
@@ -82,11 +119,11 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                     'p2Scr': p2Score,
                     'whoWon': whoWon
                 });
-                var gameRunning = false; //Stop game
+                var gameRunning = false; //Stop the game
             }
-            else { //If not, send request to continue playing
+            else { //Otherwise continue playing.
                 var jsonRes = JSON.stringify({
-                    'action':'continue',
+                    'action':'continueRound',
                     'p1Choice': p1Choice,
                     'p2Choice': p2Choice,
                     'p1Scr': p1Score,
@@ -95,11 +132,9 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                     'whoWon': whoWon
                 });
             }
+
         }
-        else{ //If the cpu is off, send a request for player two input.
-            var jsonRes = JSON.stringify({'action':'nextTurn'});
-        }
-        
+
         res.send(jsonRes);
     }
 
