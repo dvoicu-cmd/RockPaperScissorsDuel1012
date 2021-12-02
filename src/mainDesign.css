@@ -55,11 +55,17 @@
 }
 
 /*Display for the button in the center*/
-.centerButton{
+.center{
     max-width:15%;
     max-height:70%;
-    margin-top: 23%;
+    margin-top: 31%;
     text-align:center;
+    display:block;
+}
+
+/*Hide the center's game results initially*/
+.game-result{
+    display:none;
 }
 
 /*Small adjustments in the text above the rock paper scissors selections*/

@@ -45,7 +45,7 @@
                     <!-- Paragraphs to discribe the player status-->
                     <div class="playerStatus">
                         <p>Player 1</p>
-                        <p>Status: Current Turn</p>
+                        <p><span id="P1-Status" class="Player-Turn-Status">Status: Current Turn</span></p>
                     </div>
 
                     <!-- game images-->
@@ -65,8 +65,8 @@
             </div>
 
             <!-- center button -->
-            <div class="flex-child centerButton">
-                <div class="flex-child grid-container">
+            <div class="flex-child center">
+                <div class="flex-child grid-container game-result">
                     <p id="P1-Result">P1 chose: <span id="choice">Rock</span></p>
                     <p id="P2-Result">P2 chose: <span id="choice">Rock</span></p>
                     <p id="conclude"> Therefore: <span id="winner">No Player</span> Wins</p>
@@ -94,7 +94,7 @@
                     <!-- Place holder score socketts.-->
                     
                     <div id="P2" class="playerScore">
-                        <img class="playerScore-1" src="imageSources/black_peg.png">
+                        <img class="playerScore-1" src="imageSources/white_peg.png">
                         <img class="playerScore-2" src="imageSources/white_peg.png">
                     </div>
                 </div>

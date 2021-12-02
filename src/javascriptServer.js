@@ -19,7 +19,6 @@ var playerTurn = 1; //1 or 2.
 //Turn on player two cpu
 var cpuToggle = false;
 
-
 var express = require('express');
 const { send } = require('process');
 var app = express(); //I Think this is for node.js in which the express framwork is used.
@@ -32,22 +31,28 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
 
     //Server actions HERE
 
+    
+    //When there is a startGame prompt from client.
     if(recivedData['action'] == 'startGame'){
         if (gameRunning == true) { //If there is already a game running, resume it
-            //... 
+            var jsonRes = JSON.stringify({
+                'action': 'resume',
+                'p1Scr' : p1Score,
+                'p2Scr' : p2Score,
+                'pTurn' : playerTurn,
+                'cpu' : cpuToggle,
+            });
         }
         else { //Otherwise
-            gameRunning = true; // set game status as running
-            p1Score = 0; //Scores to 0
-            p2Score = 0;
-            if (recivedData['cpu'] == 'ON'){ //If the cpu was turned on.
-                cpuToggle = true; //Store the fact that the cpu is on.
-            }
+            initGame(recivedData); //Set default values
+            var jsonRes = JSON.stringify({
+                'action': 'newGame',
+                'p1Scr' : p1Score,
+                'p2Scr' : p2Score,
+                'pTurn' : playerTurn,
+                'cpu' : cpuToggle,
+            });
         }
-        var jsonRes = JSON.stringify({
-            'action': 'hide'
-        })
-
         res.send(jsonRes); //send the response back to client
     }
 
@@ -55,3 +60,17 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
 console.log("Server is running!");
 
 //Additional functions below
+
+
+//This functions resets all values that the server is holding.
+function initGame(data){
+    gameRunning = true; // set game status as running
+    p1Score = 0; //Scores to 0
+    p2Score = 0;
+    if (data['cpu'] == 'ON'){ //If the cpu was turned on.
+        cpuToggle = true; //Store the fact that the cpu is on.
+    }
+    else{ //otherwise, turn off cpu.
+        cpuToggle = false;
+    }
+}
