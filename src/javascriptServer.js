@@ -51,6 +51,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
         } 
         else { //Otherwise
             initGame(recivedData); //Set default values
+            console.log(gameRunning);
             var jsonRes = JSON.stringify({
                 'action': 'newGame',
                 'p1Scr' : p1Score,
@@ -85,7 +86,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                         'pTurn': 0,
                         'whoWon': whoWon
                     });
-                    var gameRunning = false; //Stop game
+                    gameRunning = false; //Stop game
                 }
                 else { //If not, send request to continue playing
                     var jsonRes = JSON.stringify({
@@ -124,7 +125,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                     'pTurn': 0,
                     'whoWon': whoWon
                 });
-                var gameRunning = false; //Stop the game
+                gameRunning = false; //Stop the game
             }
             else { //Otherwise continue playing.
                 var jsonRes = JSON.stringify({
