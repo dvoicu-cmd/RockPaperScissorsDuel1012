@@ -68,6 +68,11 @@
     display:none;
 }
 
+/*Hide the player status. Still want it to take up space*/
+.player-turn-status{
+    visibility: hidden;
+}
+
 /*Small adjustments in the text above the rock paper scissors selections*/
 .playerStatus{
     text-align: center;

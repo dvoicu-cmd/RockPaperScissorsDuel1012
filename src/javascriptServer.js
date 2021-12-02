@@ -56,6 +56,16 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
         res.send(jsonRes); //send the response back to client
     }
 
+    if(recivedData['action'] == 'store'){
+        p1Choice = recivedData[playerChoice]; //store p1's data
+        playerTurn++;
+        var jsonRes = JSON.stringify({
+            'action': 'nextPlay',
+            'cpu': cpuToggle,
+            'pTurn' : playerTurn,
+        });
+    }
+
 }).listen(3000);
 console.log("Server is running!");
 
