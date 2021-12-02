@@ -48,6 +48,38 @@ function Select(input , player){
 
 }
 
+//Updates the status box in the middle of the game board
+function updateMid(Data){
+    
+    const choice = new Array("null","Rock","Paper","Scissors");
+    
+    //Loops though all the potential choices and finds which one was choisen.
+    for(i=1;i<=choice.length;i++){
+        if (Data['p1Choice'] == i){
+            $("#P1-Result").text(choice[i]);
+        }
+        if (Data['p2Choice'] == i){
+            $("#P2-Result").text(choice[i]);
+        }
+    }
+    
+    //Display who won
+    $("#winner").text(Data['whoWon']);
+}
+
+function updatePoints(Data){
+    if (Data['whoWon'] == 1){ //If player one won, score
+        for(i=1; i<=Data['p1Scr']; i++){
+            $("#P1 .playerScore-"+i).attr("src", "imageSources/black_peg.png");
+        }
+    }
+    else { //Otherwise it was p2
+        for(i=1; i<=Data['p2Scr']; i++){
+            $("#P2 .playerScore-"+i).attr("src", "imageSources/black_peg.png");
+        }
+    }
+}
+
 //The client's response to the server
 function response(data){
     var serverData = JSON.parse(data); //put server response into a var
@@ -77,7 +109,7 @@ function response(data){
         //Update who's turn it is
         turn = serverData['pTurn'];
         
-        //await User input
+        //await user input
     }
 
     //action continueRound recived: Apply Score and get player one input.
@@ -87,20 +119,38 @@ function response(data){
         $("#P1-Status").text("Status: Current Turn");
         $("#P2-Status").text("Status: Awaiting Turn");
 
-        //Display Round results in the middle
+        //Update Round results
+        updateMid(serverData);
 
+        //Display Round results in the middle
+        $(".game-result").css("display","block");
 
         //Assign points
+        updatePoints(serverData);
 
+        //Update the player turn
+        turn = serverData['pTurn'];
 
+        //await user input
 
     }
 
     //action finishGame recived: Conclude the game and present results. Show new game button.
     if (serverData['action'] == 'finishGame') {
 
+        //Display Round results in the middle
+        updateMid(serverData);
+
+        //Assign points
+        updatePoints(serverData);
+
+        //Update the player turn (it will be 0)
+        turn = serverData['pTurn'];
+
+
+
+
     }
 
 
 }
-

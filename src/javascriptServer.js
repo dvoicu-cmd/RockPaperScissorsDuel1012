@@ -59,7 +59,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                 'cpu' : cpuToggle,
             });
         }
-        console.log(playerTurn);
+        DebugPrint(recivedData, jsonRes);
         res.send(jsonRes); //send the response back to client
     }
 
@@ -133,12 +133,12 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                     'p2Choice': p2Choice,
                     'p1Scr': p1Score,
                     'p2Scr': p2Score,
+                    'whoWon': whoWon,
                     'pTurn': playerTurn,
                 });
             }
-
         }
-        console.log(playerTurn);
+        DebugPrint(recivedData, jsonRes);
         res.send(jsonRes);
     }
 
@@ -206,10 +206,12 @@ function Score(win){
         }
         case 1:{
             p1Score++;
+            whoWon = 1;
             break;
         }
         case 2:{
             p2Score++;
+            whoWon = 2;
             break;
         }
     }
@@ -230,3 +232,10 @@ function cpuMove() {
     return Math.floor(Math.random()*3 + 1);
 }
 
+function DebugPrint(req, res){
+    objRes = JSON.parse(res);
+    console.log("\n");
+    console.log("REQ: "+req['action']);
+    console.log("RES: "+ objRes['action']);
+    console.log("PlayerTurn: "+playerTurn);
+}
