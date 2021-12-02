@@ -27,12 +27,31 @@ function activateCpu() {
 
 //Function to start a new game.
 function newGame() {
+    //Reset game board
+    resetBoard();
+
     //Tell the server I want to start a new game
     $.post(url+'?data='+JSON.stringify({
         'cpu': cpuToggle, //send over cpu status
         'action':'startGame'}),
         response);
     }
+
+function resetBoard(){
+    $("#P1-Status").css("visibility","visible");//Show player statuses
+    $("#P2-Status").css("visibility","visible");
+
+    //Reset scores:
+    for(i=1; i<=2; i++){
+        $("#P1 .playerScore-"+i).attr("src", "imageSources/white_peg.png");
+        $("#P2 .playerScore-"+i).attr("src", "imageSources/white_peg.png");
+    }
+
+    //Hide the middle status for first turn
+    $(".game-result").css("display","none");
+
+}
+
 
 //Selection for a player input on the images
 function Select(input , player){
@@ -67,6 +86,7 @@ function updateMid(Data){
     $("#winner").text(Data['whoWon']);
 }
 
+//Function updates the points on the board
 function updatePoints(Data){
     if (Data['whoWon'] == 1){ //If player one won, score
         for(i=1; i<=Data['p1Scr']; i++){
@@ -98,6 +118,20 @@ function response(data){
     if (serverData['action'] == 'resume'){
         window.alert("Previous game was interrupted. Resuming")
         $("#progressButton").css("display","none");
+
+            //Update Round results
+            updateMid(serverData);
+
+            //Display Round results in the middle
+            $(".game-result").css("display","block");
+        
+            //Assign points
+            updatePoints(serverData);
+        
+            //Update the player turn
+            turn = serverData['pTurn'];
+
+            //Await user input
     }
 
     //action nextTurn recived: Move to player two's turn
@@ -147,8 +181,13 @@ function response(data){
         //Update the player turn (it will be 0)
         turn = serverData['pTurn'];
 
+        //Hide player status
+        $("#P1-Status").css("visibility","hidden");
+        $("#P2-Status").css("visibility","hidden");
 
-
+        //Display new game button
+        $("#progressButton").css("display","block");
+        $("#progressButton").css("text-align","center");
 
     }
 

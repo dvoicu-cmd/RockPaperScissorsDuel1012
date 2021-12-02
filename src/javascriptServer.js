@@ -32,7 +32,7 @@ var app = express(); //I Think this is for node.js in which the express framwork
 //So from what I see in lab09, I need to put all my server commands in here
 app.post('/post', (req, res) => { //req --> request infromation, res --> server response
     res.header("Access-Control-Allow-Origin", "*"); //Not sure what this means but it was in lab09
-    console.log("Recived Action");
+    console.log("\n"+"Recived Action");
     var recivedData = JSON.parse(req.query['data']); //This where the recived data goes.
 
     //Server actions HERE
@@ -48,7 +48,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                 'p2Choice': p2Choice,
                 'pTurn' : playerTurn,
             });
-        }
+        } 
         else { //Otherwise
             initGame(recivedData); //Set default values
             var jsonRes = JSON.stringify({
@@ -150,9 +150,9 @@ console.log("Server is running!");
 
 //This functions resets all values that the server is holding.
 function initGame(data){
-    gameRunning = true; // set game status as running
     p1Score = 0; //Scores to 0
     p2Score = 0;
+    gameRunning = true;
     end = false;
     playerTurn = 1;
     whoWon = 0;
@@ -234,8 +234,9 @@ function cpuMove() {
 
 function DebugPrint(req, res){
     objRes = JSON.parse(res);
-    console.log("\n");
+    console.log("gameRunning "+ gameRunning);
     console.log("REQ: "+req['action']);
     console.log("RES: "+ objRes['action']);
     console.log("PlayerTurn: "+playerTurn);
+    console.log("Scores: P1("+p1Score+") P2("+p2Score+")");
 }
