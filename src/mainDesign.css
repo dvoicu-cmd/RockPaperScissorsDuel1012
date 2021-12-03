@@ -58,13 +58,14 @@
 .center{
     max-width:15%;
     max-height:70%;
-    margin-top: 31%;
+    margin-top: 25%;
     text-align:center;
     display:block;
 }
 
 /*Centering that button in the middle*/
 .center #progressButton {
+    margin-top: 5px;
     text-align:center;
     position:absolute;
     /*Fick this button is subborn*/
@@ -75,7 +76,10 @@
 
 /*Hide the center's game results initially*/
 .game-result{
-    display:none;
+    visibility: hidden;
+}
+.game-result p{
+    margin: 0px;
 }
 
 /*Hide the player status. Still want it to take up space*/

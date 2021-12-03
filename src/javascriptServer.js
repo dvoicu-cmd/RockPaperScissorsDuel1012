@@ -46,6 +46,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                 'p2Scr' : p2Score,
                 'p1Choice': p1Choice,
                 'p2Choice': p2Choice,
+                'whoWon': whoWon,
                 'pTurn' : playerTurn,
             });
         } 

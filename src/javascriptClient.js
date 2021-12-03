@@ -23,7 +23,7 @@ function dropDown() {
 //Function to change if the cpu.
 function activateCpu() {
 
-    //if called, switch between the two states
+    //if called, switch between the two states of toggle.
     switch(cpuToggle){
         case true:{
             cpuToggle = false;
@@ -51,7 +51,7 @@ function newGame() {
     }
 
 function resetBoard(){
-    $("#P1-Status").css("visibility","visible");//Show player statuses
+    $("#P1-Status").css("visibility","visible");//Show player stats
     $("#P2-Status").css("visibility","visible");
 
     //Reset scores:
@@ -60,8 +60,8 @@ function resetBoard(){
         $("#P2 .playerScore-"+i).attr("src", "imageSources/white_peg.png");
     }
 
-    //Hide the middle status for first turn
-    $(".game-result").css("display","none");
+    //Hide the middle round stats for first turn
+    $(".game-result").css("visibility","hidden");
 
 }
 
@@ -85,7 +85,6 @@ function Select(input , player){
 
 //Updates the status box in the middle of the game board
 function updateMid(Data){
-    
     const choice = new Array("null","Rock","Paper","Scissors");
     
     //Loops though all the potential choices and finds which one was choisen.
@@ -99,7 +98,12 @@ function updateMid(Data){
     }
     
     //Display who won
-    $("#winner").text(Data['whoWon']);
+    if (Data['whoWon'] == (1 || 2)){
+        $("#winner").text("Therefore: Player"+Data['whoWon']+" wins the exchange");
+    }
+    else {
+        $("#winner").text("Therefore: No player wins the exchange");
+    }
 }
 
 //Function updates the points on the board
@@ -116,15 +120,82 @@ function updatePoints(Data){
     }
 }
 
+//Updates the turn statuses of the players
+function updatePlayerTurn(data){
+
+    //Who is going?
+    if(turn == 1){
+        $("#P1-Status").text("Status: Current Turn");
+        $("#P2-Status").text("Status: Waiting Turn");
+    }
+    else if (turn == 2){
+        $("#P1-Status").text("Status: Waiting Turn");
+        $("#P2-Status").text("Status: Current Turn");
+    }
+
+    //When to display
+    if (data['action'] == 'newGame' || 'resume' || 'nextTurn' || 'continueRound'){
+        $("#P1-Status").css("visibility","visible");
+        $("#P2-Status").css("visibility","visible");
+    }
+    else if (data['action']=='finishGame'){
+        $("#P1-Status").css("visibility","hidden");
+        $("#P2-Status").css("visibility","hidden");
+    }
+
+}
+
+//Display the results in the middle
+function displayMid(data){
+    //hide that button
+    $("#progressButton").css("visibility","hidden");
+    
+    //for resume responses
+    if (data['action'] == 'resume'){
+
+        //If there had been a score the previous round, display them. otherwise don't.
+        if (data['p1Scr'] > 0 || data['p2Scr'] > 0){
+            game_resultSHOW();
+        }
+        else {
+            game_resultHIDE();
+        }
+    }
+
+    //Depending what request is do the following
+    if (data['action'] == 'continueRound'){
+        game_resultSHOW();
+    }
+
+    if (data['action'] == 'finishGame') {
+        $("#progressButton").css("visibility","visible");
+        $("#progressButton").css("text-align","center");
+    }
+    if (data['action'] == 'newGame'){
+        game_resultHIDE();
+    }
+
+}
+//Additional functions
+function game_resultSHOW(){
+    $(".game-result").css("visibility","visible");
+    $(".game-result p").css("margin","8px");
+}
+function game_resultHIDE(){
+    $(".game-result").css("visibility","hidden");
+    $(".game-result p").css("margin","0px");
+}
+
+
 //The client's response to the server
 function response(data){
     var serverData = JSON.parse(data); //put server response into a var
 
     //action newGame recived
     if (serverData['action'] == 'newGame') {
-        $("#progressButton").css("display","none");//hide the button in the center
-        $("#P1-Status").css("visibility","visible");//Show player statuses
-        $("#P2-Status").css("visibility","visible");
+        //Make display adjustments
+        displayMid(serverData);
+
         //Store who's turn it is.
         turn = serverData['pTurn'];
         //await user input 
@@ -133,53 +204,54 @@ function response(data){
     //action resume recived: Plug in data from the server to client
     if (serverData['action'] == 'resume'){
         window.alert("Previous game was interrupted. Resuming")
-        $("#progressButton").css("display","none");
+
+            //Update the player turn
+            turn = serverData['pTurn'];
 
             //Update Round results
             updateMid(serverData);
 
-            //Display Round results in the middle
-            $(".game-result").css("display","block");
+            //Display the middle
+            displayMid(serverData);
         
             //Assign points
             updatePoints(serverData);
-        
-            //Update the player turn
-            turn = serverData['pTurn'];
+
+            //update the player turns
+            updatePlayerTurn(serverData);
 
             //Await user input
     }
 
     //action nextTurn recived: Move to player two's turn
     if (serverData['action'] == 'nextTurn') {
-        //Update player status
-        $("#P1-Status").text("Status: Waiting Turn");
-        $("#P2-Status").text("Status: Current Turn");
 
         //Update who's turn it is
         turn = serverData['pTurn'];
+
+        //Update the player turn status
+        updatePlayerTurn(serverData);
         
         //await user input
     }
 
     //action continueRound recived: Apply Score and get player one input.
     if (serverData['action'] == 'continueRound'){
-
-        //update status
-        $("#P1-Status").text("Status: Current Turn");
-        $("#P2-Status").text("Status: Awaiting Turn");
+        
+        //Update the player turn
+        turn = serverData['pTurn'];
 
         //Update Round results
         updateMid(serverData);
 
         //Display Round results in the middle
-        $(".game-result").css("display","block");
+        displayMid(serverData);
 
         //Assign points
         updatePoints(serverData);
 
-        //Update the player turn
-        turn = serverData['pTurn'];
+        //Update the statuses
+        updatePlayerTurn(serverData);
 
         //await user input
 
@@ -188,22 +260,22 @@ function response(data){
     //action finishGame recived: Conclude the game and present results. Show new game button.
     if (serverData['action'] == 'finishGame') {
 
+        //Update the player turn (it will be 0)
+        turn = serverData['pTurn'];
+
         //Display Round results in the middle
         updateMid(serverData);
 
         //Assign points
         updatePoints(serverData);
 
-        //Update the player turn (it will be 0)
-        turn = serverData['pTurn'];
+        //Hide player results
+        displayMid(serverData);
 
-        //Hide player status
-        $("#P1-Status").css("visibility","hidden");
-        $("#P2-Status").css("visibility","hidden");
+        //Hides the player stats
+        updatePlayerTurn(serverData);
 
         //Display new game button
-        $("#progressButton").css("display","block");
-        $("#progressButton").css("text-align","center");
 
     }
 
