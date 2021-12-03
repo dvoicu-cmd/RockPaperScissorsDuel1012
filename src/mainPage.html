@@ -27,8 +27,9 @@
         <div id="dropDown" class="flex-child">
             <div id="dropDownContent" class="grid-container">
                 <div id="2player">
-                    <button id=2pEnable>local two player?</button>
-                    <p id=2pStatus>Disabled</p>
+                    <p id=2pStatus>Toggle CPU player.</p>
+                    <p> --> Note: Changes only take place when a new game is started.</p>
+                    <button id=2pEnable onclick="activateCpu()">Disabled</button>
                 </div>
 
                 <div id="Tutorial">
@@ -65,14 +66,15 @@
             </div>
 
             <!-- center button -->
-            <div class="flex-child center">
-                <div class="flex-child grid-container game-result">
+            <div class="flex-child grid-container center">
+                <div class="grid-container game-result">
                     <p>P1 chose: <span id="P1-Result">Rock</span></p>
                     <p>P2 chose: <span id="P2-Result">Rock</span></p>
                     <p> Therefore: <span id="winner">No Player</span> Wins</p>
                 </div>
-
-                <button id="progressButton" onclick="newGame()">New Game?</button>
+                <div>
+                    <button id="progressButton" class="flex-child" onclick="newGame()">New Game?</button>
+                </div>
             </div>
 
             <div id="playerTwo" class="flex-child playerBox">

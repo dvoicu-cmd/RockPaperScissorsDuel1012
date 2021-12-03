@@ -51,7 +51,6 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
         } 
         else { //Otherwise
             initGame(recivedData); //Set default values
-            console.log(gameRunning);
             var jsonRes = JSON.stringify({
                 'action': 'newGame',
                 'p1Scr' : p1Score,
@@ -157,7 +156,7 @@ function initGame(data){
     end = false;
     playerTurn = 1;
     whoWon = 0;
-    if (data['cpu'] == 'ON'){ //If the cpu was turned on.
+    if (data['cpu'] == true){ //If the cpu was turned on.
         cpuToggle = true; //Store the fact that the cpu is on.
     }
     else{ //otherwise, turn off cpu.

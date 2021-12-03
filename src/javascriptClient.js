@@ -20,9 +20,22 @@ function dropDown() {
     }
 }
 
-
+//Function to change if the cpu.
 function activateCpu() {
 
+    //if called, switch between the two states
+    switch(cpuToggle){
+        case true:{
+            cpuToggle = false;
+            $("#2pEnable").text("Disabled");
+            break;
+        }
+        case false:{
+            cpuToggle = true;
+            $("#2pEnable").text("Enabled");
+            break;
+        }
+    }
 }
 
 //Function to start a new game.
@@ -61,8 +74,11 @@ function Select(input , player){
             'action':'move'}), //Store p1's choice.
             response);
     }
-    else {
-        window.alert("Wrong side. It is player "+turn+"'s turn");
+    else if (turn == 0){ //when turn == 0 that means the game is not active
+        window.alert("Start a new game first.");
+    }
+    else{
+        window.alert("Wrong side. It is player "+turn+"'s turn"); //otherwise, the user is clicking on the wrong side.
     }
 
 }

@@ -63,6 +63,16 @@
     display:block;
 }
 
+/*Centering that button in the middle*/
+.center #progressButton {
+    text-align:center;
+    position:absolute;
+    /*Fick this button is subborn*/
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
 /*Hide the center's game results initially*/
 .game-result{
     display:none;
