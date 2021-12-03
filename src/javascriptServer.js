@@ -74,8 +74,10 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
             if(cpuToggle == true){ //if the cpu is on, make it's move
                 p2Choice = cpuMove();
                 playerTurn--; //change the turn
+
                 var Winner = evaluate(p1Choice,p2Choice); //Then evaluate the results
                 Score(Winner);
+
                 if (end == true){ //Did that move win the game? If so send it to the client.
                     var jsonRes = JSON.stringify({
                         'action':'finishGame',
@@ -114,7 +116,12 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
             playerTurn--; //Move the turn tracker back.
 
             var Winner = evaluate(p1Choice,p2Choice); //Then evaluate the results
+            console.log("Winner: "+Winner);
+            console.log(whoWon);
             Score(Winner);
+            console.log(whoWon);
+
+
             if (end == true){ //Did that move win the game? If so send it to the client.
                 var jsonRes = JSON.stringify({
                     'action':'finishGame',
@@ -203,7 +210,8 @@ function evaluate(p1, p2){
 function Score(win){
     switch(win){
         case 0:{
-            break; //No score applied
+            whoWon = 0; //Signal that it is a tie. Damn it took so long to find this bug :(
+            break;
         }
         case 1:{
             p1Score++;

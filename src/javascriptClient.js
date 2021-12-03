@@ -98,24 +98,35 @@ function updateMid(Data){
     }
     
     //Display who won
-    if (Data['whoWon'] == (1 || 2)){
-        $("#winner").text("Therefore: Player"+Data['whoWon']+" wins the exchange");
+    if (Data['whoWon'] == 0){ // OR logic operator is a pain in my ...
+        $("#winner").text("Therefore: No player wins the exchange");
     }
     else {
-        $("#winner").text("Therefore: No player wins the exchange");
+        $("#winner").text("Therefore: Player"+Data['whoWon']+" wins the exchange");
     }
 }
 
 //Function updates the points on the board
 function updatePoints(Data){
-    if (Data['whoWon'] == 1){ //If player one won, score
+
+    if (Data['action'] == 'resume'){ //specific to resume cases, just update it all
         for(i=1; i<=Data['p1Scr']; i++){
             $("#P1 .playerScore-"+i).attr("src", "imageSources/black_peg.png");
         }
-    }
-    else { //Otherwise it was p2
         for(i=1; i<=Data['p2Scr']; i++){
             $("#P2 .playerScore-"+i).attr("src", "imageSources/black_peg.png");
+        }
+    }
+    else { //Normal turn based scoring
+        if (Data['whoWon'] == 1){ //If player one won, score
+            for(i=1; i<=Data['p1Scr']; i++){
+                $("#P1 .playerScore-"+i).attr("src", "imageSources/black_peg.png");
+            }
+        }
+        else { //Otherwise it was p2
+            for(i=1; i<=Data['p2Scr']; i++){
+                $("#P2 .playerScore-"+i).attr("src", "imageSources/black_peg.png");
+            }
         }
     }
 }
@@ -188,6 +199,9 @@ function game_resultHIDE(){
 
 
 //The client's response to the server
+
+
+
 function response(data){
     var serverData = JSON.parse(data); //put server response into a var
 
