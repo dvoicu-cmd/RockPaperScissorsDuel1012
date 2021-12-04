@@ -1,11 +1,44 @@
+
+/*Applying background images*/
+#body {
+    background-image: url(imageSources/background.jpg);
+    overflow: auto;
+}
+#gameBoard{
+    background-image: url(imageSources/GameBoard.jpg);
+    overflow: auto;
+}
+#dropDown{
+    background-image: url(imageSources/dropDown.jpg);
+    overflow: auto;
+}
+
+html, body {
+        /*adjust web page size*/
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+}
+
+
 /*Specify the display of the header/footer.*/
 .bun{
     display:block;
+    margin: 1%;
+
 }
 
 /*Make the header/footer text centered*/
 .bun .text{
     text-align:center;
+}
+
+/*Adjust the header text*/
+#head .text {
+    font-size:300%; 
+    position:relative; 
+    right:45px;
 }
 
 /*Display code if I want containers to be side by side*/
@@ -27,6 +60,7 @@
     height: 90%;
     margin-left:auto;
     margin-right:auto;
+    padding:4%;
 }
 .playerScore{
     margin-left:auto;
@@ -36,22 +70,28 @@
 /*Temp highlights of the elements*/
 #gameBoard{
     border-style: solid;
-    border-color: red;
+    border-color: black;
     max-height:70%;
     margin-left:5%;
     margin-right:5%;
 }
 
 /*Drop down menu display*/
+#dropDownButton{
+    padding:1%;
+    margin:1%;
+    max-width:3%;   
+}
 #dropDown{
     border-style: solid;
-    border-color: green;
+    border-color: black;
     max-width: 30%;
     max-height: 70%;
     display:none;
 }
 #dropDownContent{
-    padding: 10%;
+    margin: 10%;
+    padding: 3%;
 }
 
 /*Display for the button in the center*/
@@ -61,6 +101,7 @@
     margin-top: 25%;
     text-align:center;
     display:block;
+    margin-bottom: auto;
 }
 
 /*Centering that button in the middle*/
@@ -91,6 +132,22 @@
     text-align: center;
 }
 .playerBox{
+    /*background-color: rgb(0, 230, 115);*/
     margin: 3%;
 }
 
+/*General style of a box that a user interacts with*/
+.content-box{
+    background-color: azure;
+    border-style: solid;
+    border-color: black;
+}
+
+.pTag {
+    font-size: 145%;
+}
+
+/*Small adjustment to the tutorial link*/
+#Tutorial {
+    margin-top: 10%;
+}

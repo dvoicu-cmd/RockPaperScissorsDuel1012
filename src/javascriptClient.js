@@ -27,12 +27,12 @@ function activateCpu() {
     switch(cpuToggle){
         case true:{
             cpuToggle = false;
-            $("#2pEnable").text("Disabled");
+            $("#2pEnable").text("OFF");
             break;
         }
         case false:{
             cpuToggle = true;
-            $("#2pEnable").text("Enabled");
+            $("#2pEnable").text("ON");
             break;
         }
     }
@@ -99,10 +99,10 @@ function updateMid(Data){
     
     //Display who won
     if (Data['whoWon'] == 0){ // OR logic operator is a pain in my ...
-        $("#winner").text("Therefore: No player wins the exchange");
+        $("#winner").text("Tie");
     }
     else {
-        $("#winner").text("Therefore: Player"+Data['whoWon']+" wins the exchange");
+        $("#winner").text("Player"+Data['whoWon']+" wins.");
     }
 }
 
@@ -137,11 +137,37 @@ function updatePlayerTurn(data){
     //Who is going?
     if(turn == 1){
         $("#P1-Status").text("Status: Current Turn");
+
+        //Make it a little more noticable to user
+        $("#P1-Status").css("font-size: 130%");
+        $("#P1-Status").css("border-bottom-style: solid");
+        $("#P1-Status").css("border-color: rgb(255, 91, 77)");
+
+        //Reset P2
         $("#P2-Status").text("Status: Waiting Turn");
+        $("#P2-Status").css("font-size: 100%");
+        $("#P2-Status").css("border-bottom-style: none");
     }
     else if (turn == 2){
+        //Reset P2
         $("#P1-Status").text("Status: Waiting Turn");
+        $("#P1-Status").css("font-size: 100%");
+        $("#P1-Status").css("border-bottom-style: none");
+        
+        //Make P2 turn noticable
         $("#P2-Status").text("Status: Current Turn");
+        $("#P2-Status").css("font-size: 130%");
+        $("#P2-Status").css("border-bottom-style: solid");
+        $("#P2-Status").css("border-color: rgb(255, 91, 77)");
+    }
+    else {
+        //Reset if none of the cases
+        $("#P1-Status").text("Status: Waiting Turn");
+        $("#P1-Status").css("font-size: 100%");
+        $("#P1-Status").css("border-bottom-style: none");
+        $("#P2-Status").text("Status: Waiting Turn");
+        $("#P2-Status").css("font-size: 100%");
+        $("#P2-Status").css("border-bottom-style: none");
     }
 
     //When to display
@@ -153,8 +179,8 @@ function updatePlayerTurn(data){
         $("#P1-Status").css("visibility","hidden");
         $("#P2-Status").css("visibility","hidden");
     }
-
 }
+
 
 //Display the results in the middle
 function displayMid(data){

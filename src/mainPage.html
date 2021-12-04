@@ -16,20 +16,20 @@
 
 
 <!-- Content of the page / Main body -->
-<body>
-    <div id="head" class="bun">
-        <button id="dropDownButton" onclick=dropDown()>=</button>
-        <p class="bun text">Header Sample Text</p>
+<body id="body">
+    <div id="head" class="bun content-box flex-container">
+        <button id="dropDownButton" onclick=dropDown() class="flex-child">=</button>
+        <p class="bun text flex-child">Rock Paper Scissors</p>
     </div> 
 
     <div id="middleBody" class="flex-container">
 
         <div id="dropDown" class="flex-child">
-            <div id="dropDownContent" class="grid-container">
+            <div id="dropDownContent" class="grid-container content-box">
                 <div id="2player">
                     <p id=2pStatus>Toggle CPU player.</p>
                     <p> --> Note: Changes only take place when a new game is started.</p>
-                    <button id=2pEnable onclick="activateCpu()">Disabled</button>
+                    <button id=2pEnable onclick="activateCpu()">OFF</button>
                 </div>
 
                 <div id="Tutorial">
@@ -39,13 +39,13 @@
         </div>
 
         <div id="gameBoard" class="flex-container flex-child">
-            <div id="playerOne" class="flex-child playerBox">
+            <div id="playerOne" class="flex-child playerBox content-box">
                 
                 <div class="grid-container">
                     
                     <!-- Paragraphs to discribe the player status-->
                     <div class="playerStatus">
-                        <p>Player 1</p>
+                        <p class="pTag">Player 1</p>
                         <p><span id="P1-Status" class="player-turn-status">Status: Current Turn</span></p>
                     </div>
 
@@ -67,7 +67,7 @@
 
             <!-- center button -->
             <div class="flex-child grid-container center">
-                <div class="grid-container game-result">
+                <div class="grid-container game-result content-box">
                     <p>P1 chose: <span id="P1-Result">null</span></p>
                     <p>P2 chose: <span id="P2-Result">null</span></p>
                     <p><span id="winner">player null wins</span></p>
@@ -75,13 +75,13 @@
                     <button id="progressButton" class="flex-child" onclick="newGame()">New Game?</button>
             </div>
 
-            <div id="playerTwo" class="flex-child playerBox">
+            <div id="playerTwo" class="flex-child playerBox content-box">
                 
                 <!-- Container -->
                 <div class="grid-container">
                     
                     <div class="playerStatus">
-                        <p>Player 2</p>
+                        <p class="pTag">Player 2</p>
                         <p><span id="P2-Status" class="player-turn-status">Status: Waiting Turn</span></p>
                     </div>
 
