@@ -171,16 +171,6 @@ function updatePlayerTurn(data){
     }
 
     //When to display
-    // if (data['action']=='newGame'||'resume'||'nextTurn'||'continueRound'){
-    //     $("#P1-Status").css("visibility","visible");
-    //     $("#P2-Status").css("visibility","visible");
-    // }
-    // else if (data['action']=='finishGame'){
-    //     $("#P1-Status").css("visibility","hidden");
-    //     $("#P2-Status").css("visibility","hidden");
-    // }
-
-
     if(data['action'] == 'finishGame'){
         $("#P1-Status").css("visibility","hidden");
         $("#P2-Status").css("visibility","hidden");
