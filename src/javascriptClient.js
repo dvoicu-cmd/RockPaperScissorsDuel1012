@@ -139,46 +139,57 @@ function updatePlayerTurn(data){
         $("#P1-Status").text("Status: Current Turn");
 
         //Make it a little more noticable to user
-        $("#P1-Status").css("font-size: 130%");
-        $("#P1-Status").css("border-bottom-style: solid");
-        $("#P1-Status").css("border-color: rgb(255, 91, 77)");
+        $("#P1-Status").css("font-size", "130%");
+        $("#P1-Status").css("border-bottom-style","solid");
+        $("#P1-Status").css("border-color","rgb(255, 91, 77)");
 
         //Reset P2
         $("#P2-Status").text("Status: Waiting Turn");
-        $("#P2-Status").css("font-size: 100%");
-        $("#P2-Status").css("border-bottom-style: none");
+        $("#P2-Status").css("font-size","100%");
+        $("#P2-Status").css("border-bottom-style","none");
     }
     else if (turn == 2){
         //Reset P2
         $("#P1-Status").text("Status: Waiting Turn");
-        $("#P1-Status").css("font-size: 100%");
-        $("#P1-Status").css("border-bottom-style: none");
+        $("#P1-Status").css("font-size","100%");
+        $("#P1-Status").css("border-bottom-style","none");
         
         //Make P2 turn noticable
         $("#P2-Status").text("Status: Current Turn");
-        $("#P2-Status").css("font-size: 130%");
-        $("#P2-Status").css("border-bottom-style: solid");
-        $("#P2-Status").css("border-color: rgb(255, 91, 77)");
+        $("#P2-Status").css("font-size","130%");
+        $("#P2-Status").css("border-bottom-style","solid");
+        $("#P2-Status").css("border-color","rgb(255, 91, 77)");
     }
     else {
         //Reset if none of the cases
         $("#P1-Status").text("Status: Waiting Turn");
-        $("#P1-Status").css("font-size: 100%");
-        $("#P1-Status").css("border-bottom-style: none");
+        $("#P1-Status").css("font-size","100%");
+        $("#P1-Status").css("border-bottom-style","none");
         $("#P2-Status").text("Status: Waiting Turn");
-        $("#P2-Status").css("font-size: 100%");
-        $("#P2-Status").css("border-bottom-style: none");
+        $("#P2-Status").css("font-size","100%");
+        $("#P2-Status").css("border-bottom-style","none");
     }
 
     //When to display
-    if (data['action'] == 'newGame' || 'resume' || 'nextTurn' || 'continueRound'){
-        $("#P1-Status").css("visibility","visible");
-        $("#P2-Status").css("visibility","visible");
-    }
-    else if (data['action']=='finishGame'){
+    // if (data['action']=='newGame'||'resume'||'nextTurn'||'continueRound'){
+    //     $("#P1-Status").css("visibility","visible");
+    //     $("#P2-Status").css("visibility","visible");
+    // }
+    // else if (data['action']=='finishGame'){
+    //     $("#P1-Status").css("visibility","hidden");
+    //     $("#P2-Status").css("visibility","hidden");
+    // }
+
+
+    if(data['action'] == 'finishGame'){
         $("#P1-Status").css("visibility","hidden");
         $("#P2-Status").css("visibility","hidden");
     }
+    else {
+        $("#P1-Status").css("visibility","visible");
+        $("#P2-Status").css("visibility","visible");
+    }
+
 }
 
 
@@ -233,11 +244,15 @@ function response(data){
 
     //action newGame recived
     if (serverData['action'] == 'newGame') {
-        //Make display adjustments
-        displayMid(serverData);
 
         //Store who's turn it is.
         turn = serverData['pTurn'];
+        //Make display adjustments
+        displayMid(serverData);
+
+        //Update the player turn status
+        updatePlayerTurn(serverData);
+
         //await user input 
     }
 

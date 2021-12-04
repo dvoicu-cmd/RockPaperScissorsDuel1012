@@ -41,7 +41,7 @@
         <div id="gameBoard" class="flex-container flex-child">
             <div id="playerOne" class="flex-child playerBox content-box">
                 
-                <div class="grid-container">
+                <div class="grid-container playerContent">
                     
                     <!-- Paragraphs to discribe the player status-->
                     <div class="playerStatus">
@@ -50,14 +50,14 @@
                     </div>
 
                     <!-- game images-->
-                    <div class="grid-container">
+                    <div class="grid-container playerContent">
                         <img src="imageSources/Rock.png" class="gameImages" onclick="Select(1,1)">
                         <img src="imageSources/Paper.jpg" class="gameImages" onclick="Select(2,1)">
                         <img src="imageSources/Scissors.png" class="gameImages" onclick="Select(3,1)">
                     </div>
                     
                     <!-- Track player score-->
-                    <div id="P1" class="playerScore">
+                    <div id="P1" class="playerScore playerContent">
                         <img class="playerScore-1" src="imageSources/white_peg.png">
                         <img class="playerScore-2" src="imageSources/white_peg.png">
                     </div>
@@ -78,7 +78,7 @@
             <div id="playerTwo" class="flex-child playerBox content-box">
                 
                 <!-- Container -->
-                <div class="grid-container">
+                <div class="grid-container playerContent">
                     
                     <div class="playerStatus">
                         <p class="pTag">Player 2</p>
@@ -86,14 +86,14 @@
                     </div>
 
                     <!-- rock paper scissors selector placeholder -->
-                    <div class="grid-container">
+                    <div class="grid-container playerContent">
                         <img src="imageSources/Rock.png" class="gameImages" onclick="Select(1,2)">
                         <img src="imageSources/Paper.jpg" class="gameImages" onclick="Select(2,2)">
                         <img src="imageSources/Scissors.png" class="gameImages" onclick="Select(3,2)">
                     </div>
                     <!-- Place holder score socketts.-->
                     
-                    <div id="P2" class="playerScore">
+                    <div id="P2" class="playerScore playerContent">
                         <img class="playerScore-1" src="imageSources/white_peg.png">
                         <img class="playerScore-2" src="imageSources/white_peg.png">
                     </div>

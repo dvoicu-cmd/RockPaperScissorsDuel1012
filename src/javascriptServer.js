@@ -76,6 +76,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
                 playerTurn--; //change the turn
 
                 var Winner = evaluate(p1Choice,p2Choice); //Then evaluate the results
+                console.log("Winner: "+Winner);
                 Score(Winner);
 
                 if (end == true){ //Did that move win the game? If so send it to the client.
@@ -117,9 +118,7 @@ app.post('/post', (req, res) => { //req --> request infromation, res --> server 
 
             var Winner = evaluate(p1Choice,p2Choice); //Then evaluate the results
             console.log("Winner: "+Winner);
-            console.log(whoWon);
             Score(Winner);
-            console.log(whoWon);
 
 
             if (end == true){ //Did that move win the game? If so send it to the client.
