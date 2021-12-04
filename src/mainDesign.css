@@ -139,7 +139,7 @@ html, body {
 
 /*General style of a box that a user interacts with*/
 .content-box{
-    background-color: azure;
+    background-color: white;
     border-style: solid;
     border-color: black;
 }
